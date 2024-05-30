@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from decouple import config
 import requests
-import datetime
 import time
 
 
