@@ -33,3 +33,9 @@ def main(request):
         }
         print(request_api_dict['weather'][0]['main'])
         return render(request, 'pages/main.html', context=context)
+
+def handler404(request, exception):
+    return render(request, 'error/404.html')
+
+def handler500(request):
+    return render(request, 'error/500.html', status=500)

@@ -1,0 +1,10 @@
+{% extends 'error/base.html' %}
+
+{% block title %} Server Error {% endblock %}
+
+{% block content %}
+
+<span style="font-size: 20px;margin-bottom: 10px;">Cidade não encontrada ou Erro Interno!😢</span>
+<button class="btn btn-warning"><a href="{% url 'main' %}" style="color: white;text-decoration: none;font-weight: 600;">Clique Aqui</a></button>
+
+{% endblock %}
