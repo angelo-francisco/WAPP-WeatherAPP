@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
-from decouple import config
+from core.settings import API_KEY
 import requests
 import time
 
-
-API_KEY = config('API_KEY')
     
 def main(request):
     if request.method == "GET":

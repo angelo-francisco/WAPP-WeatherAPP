@@ -1,12 +1,12 @@
 import os
 from pathlib import Path
+from decouple import AutoConfig
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+config = AutoConfig(search_path=BASE_DIR.joinpath('secrets/.env'))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+API_KEY = config('API_KEY')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-ol$4un0$ouaykp3ce7%eod5ejvf9u-axzcb=4=e9k-fx-)==h4"
