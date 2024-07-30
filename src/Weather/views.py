@@ -3,7 +3,7 @@ from core.settings import API_KEY
 import requests
 import time
 
-    
+
 def main(request):
     if request.method == "GET":
         return render(request, 'pages/main.html')
