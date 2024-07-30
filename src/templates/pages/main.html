@@ -47,9 +47,9 @@
     <main>
         
         {% if not weather %}
-        <div class="card bg-base-100 w-96 shadow-xl">
+        <div class="card bg-base-100 w-96 shadow-xl" style="text-align: center;">
             <div class="card-body">
-              <p>Pesquise por alguma cidade ou localidade!</p>
+              <p>Search for a city or town!</p>
             </div>
         </div>
         {% else %}
@@ -99,7 +99,7 @@
 
             <div class="card bg-base-100 w-96 shadow-xl">
                 <div class="card-body">
-                <p>Está cidade ou localidade não foi encontrada em nosso banco de dados!</p>
+                <p>This city or location was not found in our database!</p>
                 </div>
             </div>
             {% endif %}
