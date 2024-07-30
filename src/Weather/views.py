@@ -1,7 +1,4 @@
-from django.shortcuts import render, redirect
-from core.settings import API_KEY
-import requests
-import time
+from django.shortcuts import render
 
 
 def main(request):
@@ -29,6 +26,7 @@ def main(request):
             'humidity': request_api_dict['main']['humidity'],
             'country': request_api_dict['sys']['country']
         }
+
         print(request_api_dict['weather'][0]['main'])
         return render(request, 'pages/main.html', context=context)
 

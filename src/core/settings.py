@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 config = AutoConfig(search_path=BASE_DIR.joinpath('secrets/.env'))
 
 API_KEY = config('API_KEY')
+API_LINK = config('API_LINK')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-ol$4un0$ouaykp3ce7%eod5ejvf9u-axzcb=4=e9k-fx-)==h4"
