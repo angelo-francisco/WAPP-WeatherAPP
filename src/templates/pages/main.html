@@ -8,13 +8,15 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div class="navbar bg-base-100">
+    <nav style="display: flex;flex-direction: row;justify-content: center;margin:0;padding: 10px;">
         <form action="{% url 'main' %}" method="POST">
             {% csrf_token %}
-            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" name="city_name"/>
-            <!-- <button class="btn">Search</button> -->
+            <div>
+                <input type="text" placeholder="Write a coutry city or location" class="input input-bordered" name="city_name" style="width: 800px;">
+                <button class="btn">🔍</button>
+            </div>
         </form>
-      </div>
+    </nav>
     {% if code == 200 %}
     <div class="card" style="width: 28rem;">
         <div class="card-body">
