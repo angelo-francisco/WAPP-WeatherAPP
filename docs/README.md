@@ -13,13 +13,8 @@ Api Owner/Colaborator: [OpenWeather](https://openweathermap.org/)
 
 ### Preview
 <div align="center">
-  Home Page
   <img src="imgs/image.png" width="500px">
-
-  Seeing Luanda weather
   <img src="imgs/image-1.png" width="500px">
-
-  Not found page
   <img src="imgs/image-2.png" width="500px">
 </div>
 
