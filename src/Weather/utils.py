@@ -4,7 +4,6 @@ sys.path.insert(0, os.path.abspath(os.curdir))
 
 from src.core.settings import API_LINK, API_KEY
 from requests import get
-import time
 
 
 def get_weather(city: str) -> dict[str, float]:
@@ -13,3 +12,7 @@ def get_weather(city: str) -> dict[str, float]:
     requestJSON = request.json()
 
     return requestJSON
+
+def KelvinToCelsius(temp: float) -> float:
+    _temp = temp - 273.15
+    return round(_temp, 0)

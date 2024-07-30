@@ -1,11 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This site gave you a weather information">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <title>Weather App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        main {
+            padding: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
+        }
+    </style>
 </head>
 <body>
     <nav style="display: flex;flex-direction: row;justify-content: center;margin:0;padding: 10px;">
@@ -17,7 +43,83 @@
             </div>
         </form>
     </nav>
+    <br><br>
+    <main>
+        
+        {% if not weather %}
+        <div class="card bg-base-100 w-96 shadow-xl">
+            <div class="card-body">
+              <p>Pesquise por alguma cidade ou localidade!</p>
+            </div>
+        </div>
+        {% else %}
+
+            {% if weather.cod == 200 %}        
+            
+            <div id="map" style="width: 30%;border-radius: 10px;"></div>
+            <div style="width: 30%;">   
+                <u style="color: orange;">{{ time }}</u>
+                <h1 style="font-size: 50px;font-weight: 700;">{{ weather.name }}, {{ weather.sys.country }}</h1>
+                <strong>Feels like {{ feels_like }}&deg;C. {{ main }}. {{ desc }}</strong>
+                <br>
+                <br>
+                <div style="display: flex;flex-direction: row;gap: 5px;">
+                    <img src="{% static 'gifs/temp.gif' %}" alt="">
+                    <p style="font-size: 28px;"><strong>{{ temp }}&deg;C</strong></p>
+                </div>
+                <br>
+                <ul style="display: flex;flex-direction: row;flex-wrap: wrap;border-left: 1px solid orange;gap: 5px;padding: 3px;width: 300px;">
+                    <li>
+                        <i class="bi bi-arrow-up-right"></i>
+                        {{ temp_max}}&deg;C
+                    </li>
+                    <li>
+                        <i class="bi bi-arrow-down-left"></i>
+                        {{ temp_min }}&deg;C
+                    </li>
+                    <li>Pressure: {{ weather.main.pressure }}hPa</li>
+                    <li>Humidity: {{ weather.main.humidity }}%</li>
+                    <li>Visibility: {{ visible }}km</li>
+                </ul>
+                <br>
+                <div style="display: flex;flex-direction: row;gap: 10px;font-size: 30px;">
+                    <div style="display: flex;justify-content: center;flex-direction: column;text-align: center;">
+                        <i class="bi bi-sunrise"></i>
+                        {{ rise }}
+                    </div>
+                    <div style="display: flex;justify-content: center;flex-direction: column;text-align: center;">
+                        <i class="bi bi-sunset"></i>
+                        {{ set }}
+                    </div>
+                </div>
+                <br>
+                <small>Last actualization: {{ dt }}</small>
+            </div>
+            {% else %}
+
+            <div class="card bg-base-100 w-96 shadow-xl">
+                <div class="card-body">
+                <p>Está cidade ou localidade não foi encontrada em nosso banco de dados!</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endif %}
+    </main>
    
+
+   <script>
+        lat = parseFloat('{{weather.coord.lat}}')
+        lon = parseFloat('{{weather.coord.lon}}')
+        var map = L.map('map').setView([lat, lon], 10); // Coordenadas iniciais e nível de zoom
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+        
+        // Exemplo de marcador no mapa (opcional)
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup('{{weather.name}}')
+            .openPopup();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
