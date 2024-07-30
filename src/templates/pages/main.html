@@ -17,39 +17,7 @@
             </div>
         </form>
     </nav>
-    {% if code == 200 %}
-    <div class="card" style="width: 28rem;">
-        <div class="card-body">
-            <div style="display: flex;
-            flex-direction: row;justify-content: space-around;">
-                <div>
-                    <h6>{{ data }}, {{ hora }}</h6>
-                    <h3>{{country }}, {{ city }}</h3>
-                </div>
-                <div style="display: flex;justify-content: center;
-                align-items: center;
-                flex-direction: row; gap: 5px;">
-                    <span><i class="{% if main == 'Mist'%}bi bi-cloud-sun-fill{% elif main == 'Clouds' %}bi bi-cloud-fill{% elif main == 'Rain' %}bi bi-cloud-rain-heavy{% elif main == 'Snow' %}bi bi-snow{% elif main == 'Clear' %}bi bi-brightness-high-fill{% elif main == 'Thunderstorm' %}bi bi-cloud-lightning{% elif main == 'Drizzle' %}bi bi-cloud-drizzle{% elif main == 'Fog' %}bi bi-cloud-fog{% elif main == 'Haze' %}bi bi-cloud-haze{% else %}bi bi-thermometer-low{% endif %}" style="font-size: 30px;align-items: center;"></i></span>
-                    <h1 style="font-weight: 400;">
-                        {{temp}}ºC
-                    </h1>
-                    
-                </div>
-            </div>
-            <span style="display: flex;justify-content: center;
-            align-items: center;">{{lon}}, {{lat}} &nbsp;&nbsp;&nbsp;{{main}}, {{description}}&nbsp;&nbsp;&nbsp;{{pressure}}hPA {{humidity}}%</span>
-        </div>
-    </div>
-    {% elif code != 200 and code is not None %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            
-          <span style="text-align: center;">Your city is not in our data base, sorryyy! 😭🙁</span>
-        </div>
-    </div>
-    {% elif code is None %}
-
-    {% endif %}
+   
     <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
