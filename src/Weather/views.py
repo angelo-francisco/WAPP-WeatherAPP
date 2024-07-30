@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from utils import get_weather
 
 def main(request):
     if request.method == "GET":
@@ -7,11 +7,7 @@ def main(request):
     
     else:
         city = request.POST['city_name']
+        weather = get_weather(city)
 
-        return render(request, 'pages/main.html', context=context)
+        return render(request, 'pages/main.html', context={'weather': weather})
 
-def handler404(request, exception):
-    return render(request, 'error/404.html')
-
-def handler500(request):
-    return render(request, 'error/500.html', status=500)
