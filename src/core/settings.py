@@ -13,7 +13,7 @@ API_LINK = config('API_LINK')
 SECRET_KEY = "django-insecure-ol$4un0$ouaykp3ce7%eod5ejvf9u-axzcb=4=e9k-fx-)==h4"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 
